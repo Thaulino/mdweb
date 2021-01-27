@@ -1,5 +1,5 @@
 """
-ASGI config for md_service_local_sqlite project.
+ASGI config for md-service-local-sqlite project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'md_service_local_sqlite.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'md-service-local-sqlite.settings')
 
 application = get_asgi_application()

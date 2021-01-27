@@ -1,4 +1,4 @@
-"""md_service_local_sqlite URL Configuration
+"""md-service-local-sqlite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -19,3 +19,25 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+# Use include() to add paths from the catalog application
+from django.urls import include
+
+urlpatterns += [
+    path('md-core/', include('md-core.urls')),
+]
+
+# TODO undo redirect and include a fancy landing page
+# Add URL maps to redirect the base URL to md-core
+from django.views.generic import RedirectView
+urlpatterns += [
+    path('', RedirectView.as_view(url='md-core/', permanent=True)),
+]
+
+# TODO use for development only
+# Use static() to add url mapping to serve static files during development (only)
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
